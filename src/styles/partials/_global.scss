@@ -1,0 +1,27 @@
+@import "./variables";
+@import "./typography";
+@import "./mixins";
+
+main {
+    padding: 0 1.6rem;
+  
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: $black-col;
+  }
+  
+//   body {
+//     font-family: "Avenir Next LT Pro", sans-serif;
+//     font-weight: normal;
+//   }
