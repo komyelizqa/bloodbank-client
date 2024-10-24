@@ -1,8 +1,5 @@
 import React from 'react';
 import "./Header.scss";
-import logo from "../../assets/logo/BrainFlix-logo.svg";
-import avatar from "../../assets/images/Mohan-muruge.jpg";
-import avatar2 from "../../assets/images/second_avatar.jpg";
 import { Link } from "react-router-dom";
 // import Button from '../Button/Button';
 

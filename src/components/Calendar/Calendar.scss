@@ -1,0 +1,20 @@
+@import "../../styles/partials/variables";
+
+.calendar-container {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;           /* Full viewport width */
+    height: 100vh;          /* Full viewport height */
+    box-sizing: border-box; /* Ensure borders/padding are inside the container */
+    overflow: hidden;       /* Prevent overflowing content */
+    padding-right:1.6rem;
+  }
+  
+.rdtPicker{
+    position:relative;
+    z-index: 1;
+}
+
+  
+  

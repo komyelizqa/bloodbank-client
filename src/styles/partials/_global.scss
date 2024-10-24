@@ -2,8 +2,16 @@
 @import "./typography";
 @import "./mixins";
 
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 main {
     padding: 0 1.6rem;
+    margin-bottom:1.6rem;
   
     @include tablet {
       padding: 0 3.6rem;
@@ -14,14 +22,29 @@ main {
     font-size: 62.5%;
   }
   
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: $black-col;
-  }
-  
 //   body {
 //     font-family: "Avenir Next LT Pro", sans-serif;
 //     font-weight: normal;
 //   }
+
+html, body {
+  border: 2px solid red;     /* Temporarily add borders to debug overflow */
+}
+
+.calendar-container {
+  border: 2px solid blue;    /* Add a border to the calendar container */
+}
+
+.calendar-container .rbc-calendar {
+  border: 2px solid green;   /* Add a border to the calendar itself */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding and borders don't add extra width */
+  overflow-x: hidden;     /* Prevent horizontal scrolling */
+}
+

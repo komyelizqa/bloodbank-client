@@ -1,0 +1,42 @@
+.modal{
+    &__background{
+        width:100%;
+        height:100%;
+        background-color: rgba(200, 200, 200);
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__container{
+        width:500px;
+        height:500px;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    &__title{
+        display: inline-block;
+        text-align: center;
+        margin-top: 10px;
+    }
+    &__close-btn{
+        display: flex;
+        justify-content: flex-end;
+      button{
+        background-color: transparent;
+        border: none;
+        font-size: inherit;
+      }
+    }
+    
+    &__body{
+        flex:50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: inherit;
+    }
+}
