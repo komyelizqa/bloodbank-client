@@ -4,11 +4,13 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100vw;           /* Full viewport width */
-    height: 100vh;          /* Full viewport height */
-    box-sizing: border-box; /* Ensure borders/padding are inside the container */
-    overflow: hidden;       /* Prevent overflowing content */
+    width: 100vw;
+    overflow: hidden;
     padding-right:1.6rem;
+
+    @include tablet {
+      padding-right:5rem;
+    }
   }
   
 .rdtPicker{

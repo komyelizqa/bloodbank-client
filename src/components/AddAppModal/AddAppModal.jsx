@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
-import "./AddEvent.scss";
+import "./AddAppModal.scss";
 
-function AddEventModal({ isOpen, onClose, onEventAdded, selectedSlot }) {
-  // Default to current date, only update when selectedSlot changes
+function AddAppModal({ isOpen, onClose, onEventAdded, selectedSlot }) {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
 
-  // UseEffect to update the start and end when modal opens with selectedSlot
   useEffect(() => {
     if (selectedSlot) {
       setStart(new Date(selectedSlot.start));
@@ -17,7 +15,6 @@ function AddEventModal({ isOpen, onClose, onEventAdded, selectedSlot }) {
     }
   }, [selectedSlot]);
 
-  // Handle form submission
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -26,7 +23,7 @@ function AddEventModal({ isOpen, onClose, onEventAdded, selectedSlot }) {
       end: end instanceof Date ? end : new Date(end),
     });
 
-    onClose(); // Close the modal after submission
+    onClose();
   };
 
   return (
@@ -51,7 +48,7 @@ function AddEventModal({ isOpen, onClose, onEventAdded, selectedSlot }) {
   );
 }
 
-export default AddEventModal;
+export default AddAppModal;
 
   
 
