@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 @mixin tablet {
   @media (min-width: $tablet-width) {
     @content;
@@ -10,8 +12,45 @@
   }
 }
 
-@mixin big-desktop {
-  @media (min-width: $big-desktop-width) {
-    @content;
+@mixin page-header {
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+
+  @include tablet {
+    font-size: 3.2rem;
+    line-height: 4rem;
+  }
+}
+
+@mixin subheader {
+  font-size: 2rem;
+  line-height: 2.8rem;
+
+  @include tablet {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+}
+
+@mixin labels-links-buttons {
+  font-size: 1.3rem;
+  line-height: 2rem;
+
+  @include tablet {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+
+@mixin table-header {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $primary;
+
+  @include tablet {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
 }
