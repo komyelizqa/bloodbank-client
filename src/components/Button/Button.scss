@@ -1,6 +1,4 @@
-@import "../../styles/partials/variables";
-@import "../../styles/partials/fonts";
-@import "../../styles/partials/mixins";
+@use "../../App.scss" as *;
 
 .header {
   padding: 0 1.6rem;
