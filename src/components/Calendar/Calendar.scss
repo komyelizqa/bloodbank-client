@@ -1,4 +1,19 @@
-@import "../../styles/partials/variables";
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+
+.main-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet{
+  padding: 6rem;
+  }
+}
 
 .calendar-container {
     justify-content: center;
@@ -6,17 +21,173 @@
     position: relative;
     width: 100vw;
     overflow: hidden;
-    padding-right:1.6rem;
+    padding-right:0.8rem;
+    padding-left:.8rem;
 
     @include tablet {
       padding-right:5rem;
+      padding-left:5rem;
+    }
+  }
+
+  .fc-team-standart{
+    margin-right: 1.6rem;
+  }
+
+  tr{
+
+    height: 3rem;
+
+    @include tablet{
+    height: 7rem;
     }
   }
   
-.rdtPicker{
-    position:relative;
-    z-index: 1;
+  input {
+    padding: 0.5rem;
+  }
+
+  .fc-scrollgrid{
+    background-color: $secondary;
+  }
+  
+  .fc-header-toolbar {
+    display: inline-block;
+    padding: 4px 4px;
+    
+    > *:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+  
+  .fc-day {
+    margin: 2rem;
+  }
+  
+  .fc-scrollgrid-sync-table,
+  .fc-view {
+    width: 100%;
+  }
+  
+  .fc-view {
+    height: 100%;
+    background-color: #ffffff;
+
+    @include tablet {
+      height: 75%;
+    }
+    @include desktop {
+      height: 66.7%;
+    }
+  }
+  
+  .fc-h-event {
+    background-color: $secondary;
+    border: 1px solid $primary;
+  }
+  
+  .fc .fc-daygrid-day.fc-day-today {
+    background-color: $background;
+  }
+  
+  .fc .fc-button {
+    background-color: $secondary;
+    &:hover {
+      background-color: $accent;
+    }
+  }
+  
+  .fc .fc-button-primary:not(:disabled).fc-button-active,
+  .fc .fc-button-primary:disabled {
+    background-color: $secondary;
+  }
+  
+  .fc-v-event {
+    background-color: $primary;
+    border: 1px solid $background;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: .5rem;
+  }
+
+  .fc-col-header-cell-cushion {
+    text-decoration: none;
+    color: black;
+  }
+
+  .fc-scrollgrid-section-body > tbody[role="presentation"] {
+  display: none;
 }
+
+.fc .fc-daygrid-day-frame,
+.fc .fc-timegrid-slot {
+  border-left: none; /* Removes left border in each column */
+  border-right: none; /* Removes right border in each column */
+}
+
+/* Style for booked events */
+.fc-v-event {
+  background-color: $primary;
+  border: 1px solid $background;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+/* Style for available (background) events */
+
+
+/* Style for available (background) events */
+.fc-bg-event.available-event {
+  background-color: $light-green-colour; 
+  color: #4b5563;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-style: normal;
+  border: 1px solid white;
+  margin-bottom:.4rem;
+  margin-top:.4rem;
+  margin-left:1rem;
+  margin-right:1rem;
+}
+
+/* Hide the "Available" title on mobile */
+.available-event .fc-event-title {
+  display: none;
+  font-style: normal;
+}
+
+/* Show the "Available" title on tablet and desktop */
+@include tablet {
+  .available-event .fc-event-title {
+    display: block;
+  }
+}
+
+@include desktop {
+  .available-event .fc-event-title {
+    display: block;
+  }
+}
+
+.fc .fc-bg-event {
+  --fc-bg-event-opacity: 1; /* Set opacity to 1 (fully opaque) */
+}
+
+/* Remove italic from the Available text */
+.fc .available-event .fc-event-title {
+  font-style: normal;
+}
+
+
+
+
+
+  
+  
+  
 
   
   
