@@ -1,4 +1,4 @@
-@import "./styles/partials/variables";
-@import "./styles/partials/typography";
-@import "./styles/partials/mixins";
-@import "./styles/partials/global";
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/variables" as *;
+// @use "./styles/partials/global" as *;
