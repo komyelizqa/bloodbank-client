@@ -1,6 +1,7 @@
-@import "../../styles/partials/variables";
-@import "../../styles/partials/typography";
-@import "../../styles/partials/mixins";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
 
 .header {
   padding: 0 1.6rem;
