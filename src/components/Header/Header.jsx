@@ -2,26 +2,30 @@ import React from 'react';
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/bloodbank-logo.png";
-// import Button from '../Button/Button';
+import avatar from "../../assets/images/second_avatar.jpg";
+import profile from "../../assets/icons/profile-icon.svg";
+import settings from "../../assets/icons/settings-icon.svg";
 
 function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="/" className="header__nav-link">
+        <Link to="/calendar" className="header__nav-link">
           <img className="header__logo" src={logo} alt="BloodBank Logo" />
         </Link>
-        {/* <Link to="/upload" className="header__btn-link"> */}
-          {/* <Button className="header__btn">
-            UPLOAD
-          </Button> */}
-        {/* </Link> */}
+        <section className="header__user-links-container">
+        <img className="header__profile" src={profile} alt="Profile Icon" />
+        <img className="header__settings" src={settings} alt="Settings Icon" />
+        </section>
+        <section className="header__text-container">
         <h4>Volunteer</h4>
-        {/* <img
+        <h5>John Smith</h5>
+        </section>
+        <img
           src={avatar}
           className="header__avatar header__avatar--main"
           alt="avatar"
-        /> */}
+        />
       </div>
     </header>
   );
