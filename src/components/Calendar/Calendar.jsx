@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import axios from 'axios';
 import moment from 'moment';
 import AddAppModal from '../AddAppModal/AddAppModal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 import Modal from 'react-modal';
 import "./Calendar.scss";
 
@@ -14,7 +15,9 @@ Modal.setAppElement('#root');
 const MyCalendar = () => {
   const [events, setEvents] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [selectedEventId, setSelectedEventId] = useState(null);
   const calendarRef = useRef(null);
 
   const onEventAdded = async (event) => {
@@ -28,13 +31,19 @@ const MyCalendar = () => {
         status: "scheduled"
       };
 
-      console.log("Sending appointment to backend:", newAppointment);
-
       await axios.post("http://localhost:8080/appointments", newAppointment);
-
       fetchAppointments();
     } catch (error) {
       console.error("Error creating appointment:", error);
+    }
+  };
+
+  const onDeleteConfirmed = async (appointmentId) => {
+    try {
+      await axios.delete(`http://localhost:8080/appointments/${appointmentId}`);
+      fetchAppointments();
+    } catch (error) {
+      console.error("Error deleting appointment:", error);
     }
   };
 
@@ -47,45 +56,19 @@ const MyCalendar = () => {
         },
       });
   
-      let formattedEvents = [];
-      if (Array.isArray(response.data)) {
-        formattedEvents = response.data.map((appointment) => ({
-          title: appointment.volunteer,
-          start: appointment.date,
-          end: appointment.date,
-        }));
-      }
+      const formattedEvents = response.data.map((appointment) => ({
+        id: appointment.appointmentId,
+        title: appointment.volunteer,
+        start: appointment.startTime,
+        end: appointment.endTime,
+      }));
   
-      // Generate "Available" events for each 30-minute slot from 7 AM to 7 PM
-// Generate "Available" events for each 30-minute slot from 7 AM to 7 PM
-const availableSlots = [];
-const startTime = moment().startOf("week").hour(7);
-const endTime = moment().startOf("week").hour(19);
-
-for (let day = 0; day < 7; day++) {
-  let timeSlot = startTime.clone().add(day, 'days');
-  while (timeSlot.isBefore(endTime.clone().add(day, 'days'))) {
-    const slotStart = timeSlot.format();
-    const slotEnd = timeSlot.clone().add(30, 'minutes').format();
-    if (!formattedEvents.some(e => moment(e.start).isSame(slotStart))) {
-      availableSlots.push({
-        title: "Available",
-        start: slotStart,
-        end: slotEnd,
-        display: "background", // Ensures it shows as a background event
-        classNames: ["available-event"] // Custom class for styling
-      });
-    }
-    timeSlot.add(30, 'minutes');
-  }
-}
-
-setEvents([...availableSlots, ...formattedEvents]);
-
+      setEvents(formattedEvents);
     } catch (error) {
       console.error("Error fetching appointments", error);
     }
   };
+  
   
 
   useEffect(() => {
@@ -93,13 +76,19 @@ setEvents([...availableSlots, ...formattedEvents]);
   }, []);
 
   const handleSelect = (selectionInfo) => {
-    console.log("Slot selected:", selectionInfo);
     setSelectedSlot({
       start: selectionInfo.startStr,
       end: moment(selectionInfo.startStr).add(30, 'minutes').format(),
     });
     setModalOpen(true);
   };
+
+const handleEventClick = (clickInfo) => {
+  console.log("Event clicked:", clickInfo.event.id);
+  setSelectedEventId(clickInfo.event.id);
+  setDeleteModalOpen(true);
+};
+
 
   return (
     <main className="main-container">
@@ -110,20 +99,26 @@ setEvents([...availableSlots, ...formattedEvents]);
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           initialView="timeGridWeek"
           events={events}
+          editable={true}
           selectable={true}
           select={handleSelect}
-          eventClick={(clickInfo) => console.log("Event clicked:", clickInfo.event)}
+          eventClick={handleEventClick}
           slotDuration="00:30:00"
           slotMinTime="07:00:00"
           slotMaxTime="19:00:00"
           initialDate={new Date()}
           allDaySlot={false}
+          slotLabelFormat={{
+            hour: '2-digit', // Show hours with 2 digits
+            minute: '2-digit', // Show minutes with 2 digits (e.g., "7:00")
+            hour12: false, // Use 24-hour format (set to true for 12-hour format with AM/PM)
+          }}
           height="auto"
           headerToolbar={{
             right: 'prev,next today',
             center: 'title',
             left: 'dayGridMonth,timeGridWeek,timeGridDay',
-          }}
+          }}          
         />
         {modalOpen && selectedSlot && (
           <AddAppModal
@@ -140,20 +135,19 @@ setEvents([...availableSlots, ...formattedEvents]);
             selectedSlot={selectedSlot}
           />
         )}
+        {deleteModalOpen && selectedEventId && (
+          <DeleteModal
+            isOpen={deleteModalOpen}
+            onClose={() => setDeleteModalOpen(false)}
+            onDeleteConfirmed={onDeleteConfirmed}
+            appointmentId={selectedEventId}
+          />
+        )}
       </div>
     </main>
   );
 };
 
 export default MyCalendar;
-
-
-
-
-
-
-
-
-
 
 
