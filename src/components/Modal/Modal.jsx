@@ -1,48 +1,47 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Modal.scss";
-import { useRef, useEffect, useState } from "react";
-// import close from "../../assets/Icons/close-24px.svg";
+import close from "../../assets/Icons/close-24px.svg";
+import ButtonSecondary from "../ButtonSecondary/ButtonSecondary";
+import ButtonDelete from "../ButtonDelete/ButtonDelete";
 
 export default function Modal({ isOpen, onClose, children, handleDelete }) {
   const modalRef = useRef(null);
 
-  const [modalOpen, setModalOpen] = useState(isOpen);
-
   const handleCloseModal = () => {
-    if (onClose) {
-      onClose();
-    }
-    setModalOpen(false);
+    if (onClose) onClose();
+    if (modalRef.current) modalRef.current.close(); // Explicitly close the dialog
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Escape") {
-      handleCloseModal();
-    }
+    if (event.key === "Escape") handleCloseModal();
   };
-
-  useEffect(() => {
-    setModalOpen(isOpen);
-  }, [isOpen]);
 
   useEffect(() => {
     const modalElement = modalRef.current;
 
     if (modalElement) {
-      if (modalOpen) {
-        modalElement.showModal();
+      if (isOpen) {
+        modalElement.showModal(); // Open the dialog
       } else {
-        modalElement.close();
+        modalElement.close(); // Close the dialog
       }
     }
-  }, [modalOpen]);
+  }, [isOpen]);
 
   return (
-    <dialog ref={modalRef} onKeyDown={handleKeyDown} className="modal">
-      <div className="modal__content">
+    <dialog
+      ref={modalRef}
+      onKeyDown={handleKeyDown}
+      className="modal"
+      onClick={handleCloseModal} // Close when clicking outside
+    >
+      <div
+        className="modal__content"
+        onClick={(e) => e.stopPropagation()} // Prevent closing on content click
+      >
         <div className="modal__toolbar">
-          <button className="modal__close-button">
-            {/* <img src={close} onClick={handleCloseModal} /> */}
+          <button className="modal__close-button" onClick={handleCloseModal}>
+            <img src={close} alt="Close" />
           </button>
         </div>
         {children}
@@ -51,10 +50,13 @@ export default function Modal({ isOpen, onClose, children, handleDelete }) {
             <ButtonSecondary>Cancel</ButtonSecondary>
           </div>
           <div className="modal__submit" onClick={handleDelete}>
-            <ButtonDelete>Create</ButtonDelete>
+            <ButtonDelete>Delete</ButtonDelete>
           </div>
         </div>
       </div>
     </dialog>
   );
 }
+
+  
+  

@@ -11,10 +11,11 @@
 
 main {
     padding: 0 0.8rem;
-    margin-bottom:1.6rem;
+    margin-bottom: 1.6rem;
   
     @include tablet {
       padding: 0 3.6rem;
+      background-color: #FAFAFA;
     }
   }
   
@@ -39,7 +40,7 @@ main {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: $text;
 }
 
 h1 {
@@ -54,15 +55,43 @@ h4 {
     @include table-header;
 }
 
+h5{
+  @include tablet {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+}
+
 label, a, button {
     @include labels-links-buttons;
 }
 
+label{
+  padding: .8rem 0;
+}
 
+input{
+  padding-bottom:.5rem;
+}
 
 html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+
+  @include tablet{
+    font-size: 1.3rem;
+    line-height: 2rem;
+
+  }
 }
 

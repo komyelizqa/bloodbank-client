@@ -1,42 +1,87 @@
-.modal{
-    &__background{
-        width:100%;
-        height:100%;
-        background-color: rgba(200, 200, 200);
-        position: fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__container{
-        width:500px;
-        height:500px;
-        border-radius: 12px;
-        background-color: white;
-        box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
-        display: flex;
-        flex-direction: column;
-    }
-    &__title{
-        display: inline-block;
-        text-align: center;
-        margin-top: 10px;
-    }
-    &__close-btn{
-        display: flex;
-        justify-content: flex-end;
-      button{
-        background-color: transparent;
-        border: none;
-        font-size: inherit;
-      }
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.modal {
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    height: 100%;
+    max-width: unset;
+    max-height: unset;
+    border-radius: 0.4rem;
+    padding: 2rem;
+    @include tablet {
+        margin: 28rem auto;
+        height: 26rem;
+        max-width: 67rem;
     }
     
-    &__body{
-        flex:50%;
+    @include desktop {
+        height: 26rem;
+    }
+    
+    &::backdrop {
+        background-color: #13182C90;
+    }
+
+    &__content {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        font-size: inherit;
+        height: 100%;
+    }
+    
+    &__toolbar {
+        display: flex;
+        justify-content: flex-end;
+    }
+  
+    &__close-button {
+        color: black;
+        background-color: white;
+        border: none;
+        :hover{
+            cursor: pointer;
+          }
+    }
+  
+    &__buttons {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        width: 100%;
+  
+        @include tablet {
+            justify-content: flex-end;
+            width: unset;
+            margin: 0 3rem 1rem 3rem;
+            gap: 1rem;
+        }
+    }
+  
+    &__cancel {
+      width: 45%;
+      :hover{
+        cursor: pointer;
+      }
+      width: 100%;
+  
+      @include tablet {
+        width: unset;
+      }
+    }
+  
+    &__submit {
+      width: 45%;
+      :hover{
+        cursor: pointer;
+      }
+      width: 100%;
+  
+      @include tablet {
+        width: unset;
+      }
     }
 }

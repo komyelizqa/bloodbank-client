@@ -43,7 +43,7 @@
 }
 
 @mixin table-header {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -52,5 +52,25 @@
   @include tablet {
     font-size: 1.2rem;
     line-height: 1.8rem;
+  }
+}
+
+@mixin body-small {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+
+  @include tablet {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin body-medium {
+  font-size: 1.3rem;
+  line-height: 2rem;
+
+  @include tablet {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
   }
 }
