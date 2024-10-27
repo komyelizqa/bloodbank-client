@@ -1,25 +1,169 @@
-.modal-overlay {
-    background-color: rgba(0, 0, 0, 0.75);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+div.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+div.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 50rem;
+  outline: none;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  margin: 0;
+  transform: none;
+  inset: unset;
+  border: none;
+}
+
+div.modal-content {
+  .rdtPicker {
+    position: absolute;
+    min-width: 25rem;
+    z-index: 1002;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+
+    .rdtDays {
+      thead {
+        &:first-of-type {
+          display: table-header-group;
+        }
+        &:not(:first-of-type) {
+          display: none;
+        }
+      }
+    }
+
+    th {
+      padding: 0.5rem;
+      color: #4b5563;
+      font-weight: 500;
+    }
+
+    td {
+      padding: 0.5rem;
+
+      &.rdtDay {
+        &:hover {
+          background-color: #f3f4f6;
+          border-radius: 4px;
+        }
+
+        &.rdtActive {
+          background-color: $secondary;
+          color: black;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    color: #374151;
+    background-color: white;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  .button-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
   }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    width: 400px;
-    max-width: 90%;
-    z-index: 1001;
-    position: relative;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+
+    @include tablet {
+      font-size: 1.3rem;
+      line-height: 2rem;
+    }
+
+    &[type="submit"] {
+      background-color: $primary;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: $accent;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &.cancel-button {
+      background-color: white;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+
+      &:hover {
+        background-color: #f3f4f6;
+        border-color: $primary;
+      }
+
+      &:active {
+        background-color: $accent;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
   }
-  
-  
+}
+
+.modal {
+  &__close-button {
+    color: black;
+    background-color: white;
+    border: none;
+    align-self: flex-end;
+    width: 5rem;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+}
