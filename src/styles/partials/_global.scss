@@ -7,17 +7,6 @@
   margin: 0;
   padding: 0;
 }
-
-
-main {
-    padding: 0 0.8rem;
-    margin-bottom: 1.6rem;
-  
-    @include tablet {
-      padding: 0 3.6rem;
-      background-color: #FAFAFA;
-    }
-  }
   
   html {
     font-size: 62.5%;

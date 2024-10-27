@@ -1,6 +1,5 @@
 import './App.scss';
-import{BrowserRouter, Routes, Route} from "react-router-dom";
-import Header from "./components/Header/Header";  
+import{BrowserRouter, Routes, Route} from "react-router-dom"; 
 import HomePage from "./pages/HomePage/HomePage"
 import Redirect from "./components/Redirect/Redirect";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -15,7 +14,6 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Header />
    <Routes>
    <Route path="/" element={<Redirect />}></Route>
    <Route path="/calendar" element={<HomePage />} />

@@ -91,8 +91,8 @@ const handleEventClick = (clickInfo) => {
 
 
   return (
-    <main className="main-container">
-      <div className="calendar-container" id="calendar">
+    <main className="calendar__main-container">
+      <div className="calendar__calendar-container" id="calendar">
         <h1>Donation Calendar</h1>
         <FullCalendar
           ref={calendarRef}
@@ -104,20 +104,25 @@ const handleEventClick = (clickInfo) => {
           select={handleSelect}
           eventClick={handleEventClick}
           slotDuration="00:30:00"
+          slotLabelInterval="00:30"
           slotMinTime="07:00:00"
           slotMaxTime="19:00:00"
           initialDate={new Date()}
           allDaySlot={false}
           slotLabelFormat={{
-            hour: '2-digit', // Show hours with 2 digits
-            minute: '2-digit', // Show minutes with 2 digits (e.g., "7:00")
-            hour12: false, // Use 24-hour format (set to true for 12-hour format with AM/PM)
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
           }}
           height="auto"
           headerToolbar={{
             right: 'prev,next today',
             center: 'title',
             left: 'dayGridMonth,timeGridWeek,timeGridDay',
+          }}
+          dayHeaderFormat={{
+            weekday: 'short',
+            day: 'numeric',
           }}          
         />
         {modalOpen && selectedSlot && (

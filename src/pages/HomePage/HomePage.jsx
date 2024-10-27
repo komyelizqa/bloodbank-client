@@ -1,16 +1,14 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import "./HomePage.scss";
-import MyDatePicker from "../../components/DatePicker/DatePicker"
 import MyCalendar from "../../components/Calendar/Calendar";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer" 
 
 function HomePage() {
   return (
     <>
-      <main>
+        <Header />
       <MyCalendar />
-      </main>
+      <Footer />
     </>
   );
 }

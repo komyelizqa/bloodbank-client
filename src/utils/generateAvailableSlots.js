@@ -1,4 +1,3 @@
-// generateAvailableSlots.js
 import moment from 'moment';
 
 const generateAvailableSlots = (formattedEvents) => {
