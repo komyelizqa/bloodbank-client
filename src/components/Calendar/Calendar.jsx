@@ -8,7 +8,7 @@ import moment from 'moment';
 import AddAppModal from '../AddAppModal/AddAppModal';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import "./Calendar.scss";
-import { onAppAdded, onDeleteConfirmed, fetchAppointments, handleDatesSet } from '../../utils/calendarRequests';
+import { onAppAdded, onDeleteConfirmed, handleDatesSet } from '../../utils/calendarRequests';
 
 const MyCalendar = () => {
   const [events, setEvents] = useState([]);
@@ -81,8 +81,7 @@ const MyCalendar = () => {
             day: 'numeric',
           }}
         />
-
-
+        
         {modalOpen && selectedSlot && (
           <AddAppModal
             isOpen={modalOpen}

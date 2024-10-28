@@ -1,4 +1,3 @@
-import "./HomePage.scss";
 import MyCalendar from "../../components/Calendar/Calendar";
 
 function HomePage() {
