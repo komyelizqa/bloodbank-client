@@ -28,11 +28,14 @@
       flex-direction: column;
       gap: 1.5rem;
       width: 100%;
-      max-width: 300px;
+      max-width: 30rem;
+      justify-content: center;
   
       @include tablet {
         flex-direction: row;
-        max-width: 600px;
+        max-width: 60rem;
+        justify-content: center;
+        gap:5rem;
       }
     }
   
