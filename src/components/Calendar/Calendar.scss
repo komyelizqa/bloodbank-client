@@ -36,142 +36,153 @@ main {
   }
 }
 
-  .fc-timegrid-slot-label-cushion{
-    font-size: 1rem;
+.fc-timegrid-slot-label-cushion {
+  font-size: 1rem;
 
-    @include tablet{
-      font-size: 1.3rem;;
-    }
+  @include tablet {
+    font-size: 1.3rem;
   }
+}
 
-  .fc-timegrid-slot-label-frame {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-  }
-  
-  .fc-timegrid-slot-label-cushion {
-    margin-bottom: 0;
-  }
+.fc-timegrid-slot-label-frame {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
 
-  .fc-team-standart{
-    margin-right: 1.6rem;
-  }
+.fc-team-standart {
+  margin-right: 1.6rem;
+}
 
-  tr{
+table tr {
+  height: 3rem;
 
-    height: 3rem;
-
-    @include tablet{
+  @include tablet {
     height: 5rem;
-    }
   }
-  
-  input {
-    padding: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+}
+
+.fc-scrollgrid {
+  background-color: $secondary;
+}
+
+h1 {
+  padding: 1.6rem 0.8rem;
+  color: $text;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+
+  @include tablet {
+    padding: 3.2rem 0;
   }
 
-  .fc-scrollgrid{
-    background-color: $secondary;
+  @include desktop {
+    padding: 3.6rem 0;
+  }
+}
+
+.fc-header-toolbar {
+  display: inline-block;
+  padding: 4px;
+
+  > *:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.fc-day {
+  margin: 2rem;
+}
+
+.fc-scrollgrid-sync-table,
+.fc-view {
+  width: 100%;
+}
+
+.fc-view {
+  height: 100%;
+  background-color: #ffffff;
+
+  @include tablet {
+    height: 75%;
   }
 
-  h1{
-    padding-top:1.6rem;
-    padding-left:0.8rem;
-    padding-bottom: 1.6rem;
-    color:$text;
+  @include desktop {
+    height: 66.7%;
   }
-  
-  .fc-header-toolbar {
-    display: inline-block;
-    padding: 4px 4px;
-    
-    > *:not(:last-child) {
-      margin-right: 2rem;
-    }
-  }
-  
-  .fc-day {
-    margin: 2rem;
-  }
-  
-  .fc-scrollgrid-sync-table,
-  .fc-view {
-    width: 100%;
-  }
-  
-  .fc-view {
-    height: 100%;
-    background-color: #ffffff;
+}
 
-    @include tablet {
-      height: 75%;
-    }
-    @include desktop {
-      height: 66.7%;
-    }
+.fc-h-event {
+  background-color: $secondary;
+  border: 1px solid $primary;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: white;
+}
+
+.fc .fc-button {
+  background-color: $secondary;
+
+  &:hover {
+    background-color: $accent;
   }
-  
-  .fc-h-event {
-    background-color: $secondary;
-    border: 1px solid $primary;
+}
+
+.fc .fc-button-primary {
+  background-color: $secondary;
+  color: $text;
+  border: 1px solid grey;
+  font-size: 1.1rem;
+  border-radius: 10px;
+
+  @include tablet {
+    font-size: 1.3rem;
+    height: 4rem;
+    width: 6rem;
   }
-  
-  .fc .fc-daygrid-day.fc-day-today {
-    background-color: $background;
-  }
-  
-  .fc .fc-button {
-    background-color: $secondary;
-    &:hover {
-      background-color: $accent;
-    }
-  }
-  
-  .fc .fc-button-primary {
-    background-color: $secondary;
+
+  &:hover {
     color: black;
-    border: 1px solid grey;
-    font-size: 1.1rem;
-    border-radius: 10px;
-  
-    @include tablet {
-      font-size: 1.3rem;
-      height: 4rem;
-      width: 6rem;
-    }
-  
-    &:hover {
-      color: black;
-      border-color: $primary;
-      background-color: $secondary;
-    }
-
-    &:active{
-      background-color: $accent;
-      border-color: $accent;
-    }
-  }
-  
-  .fc .fc-button-primary:not(:disabled).fc-button-active,
-  .fc .fc-button-primary:disabled {
-    background-color: $primary;
-    color: white;
-  }
-  
-  .fc-v-event {
-    background-color: $primary;
-    border: 1px solid $background;
-    border-radius: 10px;
-    padding-left:.5rem;
+    border-color: $primary;
+    background-color: $secondary;
   }
 
-  .fc-col-header-cell-cushion {
-    text-decoration: none;
-    color: black;
+  &:active {
+    background-color: $accent;
+    border-color: $accent;
   }
+}
 
-  .fc-scrollgrid-section-body > tbody[role="presentation"] {
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:disabled {
+  background-color: $primary;
+  color: white;
+}
+
+.fc-v-event {
+  background-color: $primary;
+  border: 1px solid $background;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+}
+
+.fc-col-header-cell-cushion {
+  text-decoration: none;
+  color: black;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+
+  @include tablet {
+    font-size: 1.5rem;
+    color: #373e49;
+  }
+}
+
+.fc-scrollgrid-section-body > tbody[role="presentation"] {
   display: none;
 }
 
@@ -182,7 +193,7 @@ main {
 }
 
 .fc-bg-event.available-event {
-  background-color: $light-green-colour; 
+  background-color: $light-green-colour;
   color: #4b5563;
   font-weight: bold;
   text-align: center;
@@ -190,25 +201,18 @@ main {
   border-radius: 10px;
   font-style: normal;
   border: 1px solid white;
-  margin-bottom:.4rem;
-  margin-top:.4rem;
-  margin-left:1rem;
-  margin-right:1rem;
+  margin: 0.4rem 1rem;
 }
 
 .available-event .fc-event-title {
   display: none;
   font-style: normal;
-}
 
-@include tablet {
-  .available-event .fc-event-title {
+  @include tablet {
     display: block;
   }
-}
 
-@include desktop {
-  .available-event .fc-event-title {
+  @include desktop {
     display: block;
   }
 }
@@ -221,41 +225,32 @@ main {
   font-style: normal;
 }
 
-a{
-  color:white;
+a {
+  color: white;
   text-decoration: none;
 }
 
-.fc-daygrid-day-number{
-  color:$text;
+.fc-daygrid-day-number {
+  color: $text;
   text-decoration: none;
 }
 
-.fc-daygrid-dot-event{
+.fc-daygrid-dot-event {
   background-color: $primary;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
 
-  @include tablet{
+  @include tablet {
     flex-direction: row;
   }
 }
 
-.fc-event-time{
+.fc-event-time,
+.fc-event-title {
   color: white;
 }
 
-.fc-event-title{
-  color: white;
-}
-
-.fc-col-header-cell-cushion{font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-font-size:1.1rem;
-@include tablet{
-  font-size: 1.5rem;
-  color: #373e49;
-}}
 
 
 

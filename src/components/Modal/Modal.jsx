@@ -9,7 +9,7 @@ export default function Modal({ isOpen, onClose, children, handleDelete }) {
 
   const handleCloseModal = () => {
     if (onClose) onClose();
-    if (modalRef.current) modalRef.current.close(); // Explicitly close the dialog
+    if (modalRef.current) modalRef.current.close();
   };
 
   const handleKeyDown = (event) => {
@@ -21,9 +21,9 @@ export default function Modal({ isOpen, onClose, children, handleDelete }) {
 
     if (modalElement) {
       if (isOpen) {
-        modalElement.showModal(); // Open the dialog
+        modalElement.showModal();
       } else {
-        modalElement.close(); // Close the dialog
+        modalElement.close();
       }
     }
   }, [isOpen]);
@@ -33,11 +33,11 @@ export default function Modal({ isOpen, onClose, children, handleDelete }) {
       ref={modalRef}
       onKeyDown={handleKeyDown}
       className="modal"
-      onClick={handleCloseModal} // Close when clicking outside
+      onClick={handleCloseModal}
     >
       <div
         className="modal__content"
-        onClick={(e) => e.stopPropagation()} // Prevent closing on content click
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="modal__toolbar">
           <button className="modal__close-button" onClick={handleCloseModal}>

@@ -1,26 +1,21 @@
-import './App.scss';
-import{BrowserRouter, Routes, Route} from "react-router-dom"; 
-import HomePage from "./pages/HomePage/HomePage"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
 import Redirect from "./components/Redirect/Redirect";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Modal from 'react-modal';
-import "react-datetime/css/react-datetime.css";
-
-Modal.setAppElement('#root');
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer" 
 
 function App() {
-
-
   return (
     <BrowserRouter>
-   <Routes>
-   <Route path="/" element={<Redirect />}></Route>
-   <Route path="/calendar" element={<HomePage />} />
-   </Routes>
-   </BrowserRouter>
-
-  )
+            <Header />
+      <Routes>
+        <Route path="/" element={<Redirect />} />
+        <Route path="/calendar" element={<HomePage />} />
+        <Route path="/calendar/:type/:year/:month/:day" element={<HomePage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
