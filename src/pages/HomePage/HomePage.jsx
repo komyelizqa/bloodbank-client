@@ -1,11 +1,18 @@
-import MyCalendar from "../../components/Calendar/Calendar";
+import React from 'react';
+import VolunteerHomePage from '../VolunteerHomePage/VolunteerHomePage';
+import DoctorHomePage from '../DoctorHomePage/DoctorHomePage';
 
-function HomePage() {
-  return (
-    <>
-      <MyCalendar />
-    </>
-  );
-}
+const HomePage = () => {
+  const userRole = localStorage.getItem('userRole');
+  
+  if (userRole === 'volunteer') {
+    return <VolunteerHomePage />;
+  } else if (userRole === 'doctor') {
+    return <DoctorHomePage />;
+  } else {
+    return null;
+  }
+};
 
 export default HomePage;
+

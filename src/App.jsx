@@ -1,19 +1,30 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
-import Redirect from "./components/Redirect/Redirect";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer" 
+import VolunteerHomePage from "./pages/VolunteerHomePage/VolunteerHomePage";
+import DoctorHomePage from "./pages/DoctorHomePage/DoctorHomePage";
+import LoginPage from "./pages/LoginPage/LoginPage"
 
 function App() {
+  const userRole = localStorage.getItem('userRole');
+
   return (
     <BrowserRouter>
-            <Header />
       <Routes>
-        <Route path="/" element={<Redirect />} />
-        <Route path="/calendar" element={<HomePage />} />
-        <Route path="/calendar/:type/:year/:month/:day" element={<HomePage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/calendar/*"
+          element={
+            userRole === 'volunteer' ? (
+              <VolunteerHomePage />
+            ) : userRole === 'doctor' ? (
+              <DoctorHomePage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }
