@@ -5,10 +5,9 @@ import close from "../../assets/Icons/close-24px.svg";
 
 Modal.setAppElement("#root");
 
-function DeleteModal({ isOpen, onClose, onDeleteConfirmed, appointmentId }) {
+function DeleteModal({ isOpen, onClose, onDeleteConfirmed}) {
   const handleDelete = async () => {
-    await onDeleteConfirmed(appointmentId);
-    onClose();
+    await onDeleteConfirmed();
   };
 
   return (
@@ -28,12 +27,24 @@ function DeleteModal({ isOpen, onClose, onDeleteConfirmed, appointmentId }) {
         >
           <img src={close} alt="Close" />
         </button>
-        <h2 class="modal__header">Confirm Deletion</h2>
-  <p class="modal__message">Are you sure you want to delete this appointment?</p>
-  <div class="modal__button-group">
-    <button class="modal__button modal__button--confirm" onClick={handleDelete}>Delete</button>
-    <button class="modal__button modal__button--cancel" onClick={onClose}>Cancel</button>
-  </div>
+        <h2 className="modal__header">Confirm Deletion</h2>
+        <p className="modal__message">
+          Are you sure you want to delete this appointment?
+        </p>
+        <div className="modal__button-group">
+          <button
+            className="modal__button modal__button--confirm"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+          <button
+            className="modal__button modal__button--cancel"
+            onClick={onClose}
+          >
+            Cancel
+          </button>
+        </div>
       </section>
     </Modal>
   );

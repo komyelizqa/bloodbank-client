@@ -24,15 +24,19 @@ export const onAppAdded = async (event, calendarApi) => {
   }
 };
 
-export const onDeleteConfirmed = async (appointmentId, setEvents, setSelectedEventId, setDeleteModalOpen) => {
-
+export const onDeleteConfirmed = async (appointmentId, setEvents, setSelectedEventId, setDeleteModalOpen, calendarApi) => {
   try {
-
     await axios.delete(`http://localhost:8080/appointments/${appointmentId}`);
+    
+    // Remove the event from FullCalendar
+    const eventToRemove = calendarApi.getEventById(appointmentId);
+    if (eventToRemove) {
+      eventToRemove.remove();
+    }
 
+    // Update state
     setEvents((prevEvents) => {
-      const updatedEvents = prevEvents.filter(event => event.id !== appointmentId);
-      return updatedEvents;
+      return prevEvents.filter(event => event.id !== appointmentId);
     });
 
     setSelectedEventId(null);

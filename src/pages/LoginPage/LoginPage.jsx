@@ -2,11 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./LoginPage.scss";
 
-const LoginPage = () => {
+const LoginPage = ({ setUserRole }) => {
     const navigate = useNavigate();
   
     const handleLogin = (role) => {
       localStorage.setItem('userRole', role);
+      setUserRole(role);
+      window.dispatchEvent(new Event('userRoleChanged'));
       navigate('/calendar');
     };
   
