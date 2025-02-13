@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Header.scss";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo/bloodbank-logo.png";
+import logo from "../../assets/logo/BloodBank-logo2.png";
 import profile from "../../assets/icons/profile-icon.svg";
 import settings from "../../assets/icons/settings-icon.svg";
 

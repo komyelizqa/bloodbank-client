@@ -66,9 +66,18 @@ input {
   padding: 0.5rem;
 }
 
-.fc-scrollgrid {
+.rbc-header{
   background-color: $secondary;
 }
+
+.fc-scrollgrid {
+  // background-color: $secondary;
+}
+
+.fc-timegrid-col.fc-day-today {
+  background-color: $secondary !important;
+}
+
 
 h1 {
   padding: 1.6rem 0.8rem;
@@ -86,7 +95,6 @@ h1 {
 
 .fc-header-toolbar {
   display: inline-block;
-  padding: 4px;
 
   > *:not(:last-child) {
     margin-right: 2rem;
@@ -157,11 +165,16 @@ h1 {
   }
 }
 
-.fc .fc-button-primary:not(:disabled).fc-button-active,
-.fc .fc-button-primary:disabled {
+.fc .fc-button-primary:not(:disabled).fc-button-active {
   background-color: $primary;
   color: white;
 }
+
+.fc .fc-button-primary:disabled {
+  background-color: $primary;
+  color: white
+}
+
 
 .fc-v-event {
   background-color: $primary;
@@ -248,7 +261,7 @@ a {
 
 .fc-event-time,
 .fc-event-title {
-  color: white;
+  color: $text;
 }
 
 

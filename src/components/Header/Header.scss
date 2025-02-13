@@ -19,7 +19,6 @@
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
     padding: 1.6rem 0;
-    gap: 1.6rem;
     border-bottom: 1px solid #E1E1E1;
 
     @include tablet {
@@ -98,8 +97,8 @@
     object-fit: cover;
 
     @include tablet {
-      width: 4rem;
-      height: 4rem;
+      width: 4.5rem;
+      height: 4.5rem;
       grid-column: 5 / 6;
     }
   }
