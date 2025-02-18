@@ -61,6 +61,7 @@ const MyCalendar = () => {
           events={events}
           editable={true}
           selectable={true}
+          selectHelper={true}
           select={handleSelect}
           datesSet={(dateInfo) => handleDatesSet(dateInfo, navigate, setEvents)}
           eventClick={handleEventClick}
