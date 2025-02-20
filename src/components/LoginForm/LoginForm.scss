@@ -1,0 +1,66 @@
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.login-form {
+    border-radius: 1.5rem;
+    background-color: $secondary;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    @include tablet{
+        width: 80%;
+        height: 50vh;
+    }
+
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    &__input-wrapper{
+        margin:1.5rem 0;
+        // width: 100%;
+    }
+
+    &__input-email{
+        min-height: 3rem;
+        max-width: 100%;
+        width: 90%;
+        margin: 1rem 0;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        border: 2px solid $light-blue-colour;
+
+        @include tablet {
+            padding: 1.5rem 1.5rem;
+        }
+
+        &:focus {
+            outline: none;
+            border: 2px solid $blue-colour;
+        }
+    }
+    &__input-password{
+        min-height: 3rem;
+        max-width: 100%;
+        margin: 1rem 0;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        border: 2px solid $light-blue-colour;
+        width: 90%;
+
+        @include tablet {
+            padding: 1.5rem 1.5rem;
+        }
+
+        &:focus {
+            outline: none;
+            border: 2px solid $blue-colour;
+        }
+    }
+}

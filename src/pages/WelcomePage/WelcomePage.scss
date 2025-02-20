@@ -1,0 +1,86 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FAFAFA;
+  
+    &__header {
+      font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: $text;
+      margin-bottom: 2rem;
+      line-height: 2.1rem;
+  
+      @include tablet {
+        font-size: 2.5rem;
+      }
+
+      &-second{
+        font-size: 2rem;
+        margin-bottom:2rem;
+        color: $text;
+      }
+    }
+  
+    &__button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 30rem;
+      justify-content: center;
+  
+      @include tablet {
+        flex-direction: row;
+        max-width: 60rem;
+        justify-content: center;
+        gap:5rem;
+      }
+    }
+  
+    &__button {
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: $background;
+  
+      &:hover {
+        transform: translateY(-2px);
+      }
+  
+      &:active {
+        transform: translateY(0);
+      }
+  
+      &--volunteer {
+        background-color: $primary;
+  
+        &:hover {
+          background-color: $accent;
+        }
+      }
+  
+      &--doctor {
+        background-color: $secondary;
+        color:$text;
+  
+        &:hover {
+          background-color: $accent;
+          color:white;
+        }
+      }
+    }
+  }
+  
