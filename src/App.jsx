@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import VolunteerHomePage from "./pages/VolunteerHomePage/VolunteerHomePage";
 import DoctorHomePage from "./pages/DoctorHomePage/DoctorHomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 function App() {
   const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
@@ -26,7 +26,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage setUserRole={setUserRole} />} />
+        <Route path="/login" element={<WelcomePage setUserRole={setUserRole} />} />
         <Route
           path="/calendar/*"
           element={
